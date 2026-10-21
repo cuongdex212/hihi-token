@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIHI TOKEN - FREE FIRE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Roboto', sans-serif; }
+        body { background-color: #0b0914; color: #ffffff; display: flex; justify-content: center; padding: 20px 10px; min-height: 100vh; }
+        .container { width: 100%; max-width: 750px; background-color: #120e24; border: 1px solid #231b3d; border-radius: 16px; padding: 25px; box-shadow: 0 0 30px rgba(120, 50, 255, 0.15); }
+        .header { text-align: center; margin-bottom: 25px; }
+        .avatar { width: 80px; height: 80px; border-radius: 50%; border: 3px solid #d946ef; margin: 0 auto 10px; overflow: hidden; box-shadow: 0 0 15px #d946ef; }
+        .avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .title { font-family: 'Orbitron', sans-serif; font-size: 26px; font-weight: 800; color: #d946ef; letter-spacing: 1px; }
+        .subtitle { font-size: 11px; color: #9ca3af; letter-spacing: 2px; margin-top: 4px; }
+        .guide-box { background-color: #1a1433; border: 1px solid #2d2254; border-radius: 12px; padding: 18px; margin-bottom: 20px; }
+        .guide-title { font-size: 13px; font-weight: 700; color: #d946ef; margin-bottom: 12px; }
+        .guide-step { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; font-size: 13px; color: #d1d5db; }
+        .step-num { background-color: #2e1d52; color: #c084fc; width: 22px; height: 22px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
+        .social-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 18px; }
+        .social-btn { background-color: #1a1433; border: 1px solid #2d2254; border-radius: 10px; height: 48px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 20px; transition: 0.2s; }
+        .social-btn:hover { border-color: #d946ef; background-color: #241b47; }
+        .gg { color: #ea4335; } .fb { color: #1877f2; } .x { color: #ffffff; } .vk { color: #0077ff; }
+        .input-box { background-color: #0d0a1a; border: 1px solid #2d2254; border-radius: 10px; padding: 12px 15px; width: 100%; color: #fff; font-size: 13px; outline: none; margin-bottom: 15px; font-family: monospace; }
+        .input-box:focus { border-color: #d946ef; }
+        .btn-check { width: 100%; background: linear-gradient(90deg, #a855f7, #d946ef); border: none; padding: 14px; border-radius: 10px; color: #fff; font-weight: 700; font-size: 15px; cursor: pointer; letter-spacing: 1px; }
+        .btn-check:hover { opacity: 0.9; }
+        .result-section { margin-top: 25px; border-top: 1px dashed #2d2254; padding-top: 20px; display: none; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px; }
+        .info-card { background-color: #1a1433; border: 1px solid #2d2254; border-radius: 10px; padding: 12px 15px; }
+        .info-label { font-size: 11px; color: #9ca3af; text-transform: uppercase; font-weight: 600; margin-bottom: 4px; }
+        .info-val { font-size: 15px; font-weight: 700; color: #ffffff; }
+        .token-card { background-color: #1a1433; border: 1px solid #2d2254; border-radius: 10px; padding: 12px; margin-bottom: 15px; }
+        .token-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .token-title { font-size: 11px; font-weight: 700; color: #9ca3af; }
+        .btn-copy { background-color: #2d2254; color: #d1d5db; border: none; padding: 4px 10px; border-radius: 6px; font-size: 11px; cursor: pointer; font-weight: 600; }
+        .btn-copy:hover { background-color: #d946ef; color: #fff; }
+        .token-val { background-color: #0d0a1a; border: 1px solid #231b3d; border-radius: 6px; padding: 10px; font-size: 12px; color: #a7f3d0; word-break: break-all; font-family: monospace; }
+        .email-box { background-color: #1a1433; border: 1px solid #7e22ce; border-radius: 10px; padding: 15px; margin-bottom: 15px; }
+        .email-display { display: flex; align-items: center; justify-content: space-between; background-color: #0d0a1a; padding: 10px 15px; border-radius: 8px; border: 1px solid #3b0764; margin-top: 8px; }
+        .email-text { font-family: monospace; font-size: 13px; color: #e9d5ff; }
+        .tag-ngam { background-color: #15803d; color: #bbf7d0; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; display: flex; align-items: center; gap: 4px; }
+        .action-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; }
+        .act-btn { background-color: #1a1433; border: 1px solid #2d2254; color: #e5e7eb; padding: 10px; border-radius: 8px; font-size: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; font-weight: 600; }
+        .act-btn:hover { border-color: #d946ef; background-color: #241b47; }
+        .btn-stop { background-color: #451a1a; border-color: #7f1d1d; color: #fca5a5; }
+        .btn-delete { background-color: #3b1818; border-color: #991b1b; color: #fca5a5; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="avatar"><img src="https://api.dicebear.com/7.x/bottts/svg?seed=FreeFire" alt="Avatar"></div>
+            <div class="title">HIHI TOKEN</div>
+            <div class="subtitle">BY ADMIN TY DY</div>
+        </div>
+
+        <div class="guide-box">
+            <div class="guide-title"><i class="fas fa-info-circle"></i> HƯỚNG DẪN</div>
+            <div class="guide-step"><span class="step-num">1</span> Chọn nền tảng đăng nhập bên dưới</div>
+            <div class="guide-step"><span class="step-num">2</span> Sao chép URL LINK từ lịch sử duyệt web</div>
+            <div class="guide-step"><span class="step-num">3</span> Dán URL hoặc Eat Token vào ô bên dưới</div>
+        </div>
+
+        <div class="social-grid">
+            <div class="social-btn gg" onclick="setTokenBox('Google')"><i class="fab fa-google"></i></div>
+            <div class="social-btn fb" onclick="setTokenBox('Facebook')"><i class="fab fa-facebook-f"></i></div>
+            <div class="social-btn x" onclick="setTokenBox('X')"><i class="fab fa-x-twitter"></i></div>
+            <div class="social-btn vk" onclick="setTokenBox('VK')"><i class="fab fa-vk"></i></div>
+        </div>
+
+        <input type="text" id="eatInput" class="input-box" value="https://discstore.kiosgamer.co.id/?eat=3a07c99830d65e34d28eedd4dc6340ddf7b7e0d3" placeholder="Dán URL hoặc Eat Token vào đây...">
+        <button class="btn-check" onclick="sendCheck()">CHECK &rarr;</button>
+
+        <div class="result-section" id="resultCard">
+            <div class="grid-2">
+                <div class="info-card"><div class="info-label">NICKNAME</div><div class="info-val" id="resNick">-</div></div>
+                <div class="info-card"><div class="info-label">REGION</div><div class="info-val" id="resRegion">-</div></div>
+            </div>
+            <div class="grid-2">
+                <div class="info-card"><div class="info-label">ACCOUNT ID</div><div class="info-val" id="resUid">-</div></div>
+                <div class="info-card"><div class="info-label">LEVEL</div><div class="info-val" id="resLevel">-</div></div>
+            </div>
+
+            <div class="token-card">
+                <div class="token-header"><span class="token-title">ACCESS TOKEN</span><button class="btn-copy" onclick="copyText('resAccessToken')"><i class="fas fa-paste"></i> COPY</button></div>
+                <div class="token-val" id="resAccessToken">-</div>
+            </div>
+
+            <div class="token-card">
+                <div class="token-header"><span class="token-title">JWT TOKEN</span><button class="btn-copy" onclick="copyText('resJwtToken')"><i class="fas fa-paste"></i> COPY</button></div>
+                <div class="token-val" id="resJwtToken" style="color: #9ca3af;">Không thể chuyển sang JWT</div>
+            </div>
+
+            <div class="email-box">
+                <div class="token-title" style="color: #d946ef; margin-bottom: 8px;"><i class="fas fa-envelope"></i> EMAIL XÁC THỰC</div>
+                <div class="email-display">
+                    <span class="email-text" id="resEmail">-</span>
+                    <span class="tag-ngam"><i class="fas fa-check"></i> Đã ngấm</span>
+                </div>
+            </div>
+
+            <div class="action-grid">
+                <button class="act-btn" onclick="alert('Đã gửi mã OTP thành công!')"><i class="fas fa-paper-plane" style="color: #38bdf8;"></i> Gửi OTP</button>
+                <button class="act-btn" onclick="alert('Đã thực hiện chặn mail!')"><i class="fas fa-lock" style="color: #facc15;"></i> Chặn mail</button>
+                <button class="act-btn btn-stop" onclick="alert('Đã dừng chặn mail!')"><i class="fas fa-stop-circle"></i> Dừng chặn</button>
+                <button class="act-btn btn-delete" onclick="alert('Đã hủy mail xác thực!')"><i class="fas fa-trash-alt"></i> Hủy mail</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function setTokenBox(p) {
+            document.getElementById("eatInput").value = "https://discstore.kiosgamer.co.id/?eat=token_" + p.toLowerCase() + "_sample";
+        }
+
+        async function sendCheck() {
+            const token = document.getElementById("eatInput").value.trim();
+            if(!token) {
+                alert("Vui lòng nhập Token hoặc URL!");
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/check-token', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ token })
+                });
+                const data = await response.json();
+                
+                if(data.success) {
+                    document.getElementById("resNick").innerText = data.nickname;
+                    document.getElementById("resRegion").innerText = data.region;
+                    document.getElementById("resUid").innerText = data.account_id;
+                    document.getElementById("resLevel").innerText = data.level;
+                    document.getElementById("resAccessToken").innerText = data.access_token;
+                    document.getElementById("resEmail").innerText = data.email;
+                    
+                    document.getElementById("resultCard").style.display = "block";
+                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                } else {
+                    alert(data.message);
+                }
+            } catch(e) {
+                alert("Lỗi kết nối tới máy chủ backend!");
+            }
+        }
+
+        function copyText(id) {
+            const text = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(text);
+            alert("Đã sao chép thành công!");
+        }
+    </script>
+</body>
+</html>
